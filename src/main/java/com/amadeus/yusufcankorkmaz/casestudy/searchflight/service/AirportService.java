@@ -32,11 +32,6 @@ public class AirportService {
                 .collect(Collectors.toList());
     }
 
-    public AirportDto getAirportByCityName(String cityName){
-        Airport airport = airportRepository.getAirportByCityName(cityName).orElseThrow(()-> new NotFoundException(ExceptionEntity.Airport));
-        return AirportDto.airportToDto(airport);
-    }
-
     public AirportDto createAirport(AirportDto airportDto){
         Airport newAirport = new Airport(airportDto.getCityName());
         return AirportDto.airportToDto(airportRepository.save(newAirport));
@@ -58,5 +53,10 @@ public class AirportService {
 
     protected Airport fetchAirportById(Long id){
         return airportRepository.findById(id).orElseThrow( () -> new NotFoundException(ExceptionEntity.Airport));
+    }
+
+    protected AirportDto getAirportByCityName(String cityName){
+        Airport airport = airportRepository.getAirportByCityName(cityName).orElseThrow(()-> new NotFoundException(ExceptionEntity.Airport));
+        return AirportDto.airportToDto(airport);
     }
 }

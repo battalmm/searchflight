@@ -2,12 +2,15 @@ package com.amadeus.yusufcankorkmaz.casestudy.searchflight.service;
 
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.CreateFlightRequest;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.FlightDto;
+import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.SearchFlightRequest;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.entity.Flight;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.exception.ExceptionEntity;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.exception.NotFoundException;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.repository.FlightRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -67,5 +70,20 @@ public class FlightService {
         flightRepository.deleteById(flightId);
     }
 
+    protected List<FlightDto> findFlightsFilteredDay(String departureAirportCityName, String arrivalAirportCityName, LocalDateTime time){
 
+        LocalDateTime startOfDayTime = time.toLocalDate().atStartOfDay();
+        LocalDateTime endOfDayTime = time.toLocalDate().atTime(LocalTime.MAX);
+
+        List<Flight> flights = flightRepository.findAllByDepartureTimeBetweenAndDepartureAirportCityNameAndArrivalAirportCityName(
+                startOfDayTime,
+                endOfDayTime,
+                departureAirportCityName,
+                arrivalAirportCityName
+        );
+        return flights
+                .stream()
+                .map(FlightDto::convertFlightToDto)
+                .collect(Collectors.toList());
+    }
 }
