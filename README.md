@@ -91,7 +91,7 @@ When the application start default airports and flights will be create and saced
 
 <img width="1243" alt="oneway" src="https://github.com/battalmm/deneme/assets/122535629/88129286-f721-4084-b8ff-b0d3a9e5871c">
 
-3. Round trip:
+2. Round trip:
 
 <img width="1245" alt="roundtrip" src="https://github.com/battalmm/deneme/assets/122535629/c3f32b86-ab37-4436-8886-08dc3f8651e7">
 
