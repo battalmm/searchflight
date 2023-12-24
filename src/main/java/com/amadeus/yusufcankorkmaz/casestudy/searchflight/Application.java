@@ -17,17 +17,5 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@Bean
-	@Transactional
-	public CommandLineRunner initializeData(AirportService airportService) {
-		return args -> {
-			addDefaultAirports(airportService);
-		};
-	}
-	private void addDefaultAirports(AirportService airportService) {
-		for (int i = 1; i <= 30; i++) {
-			AirportDto airportDto = new AirportDto("MockCity" + i);
-			airportService.createAirport(airportDto);
-			};
-		}
+
 	}
