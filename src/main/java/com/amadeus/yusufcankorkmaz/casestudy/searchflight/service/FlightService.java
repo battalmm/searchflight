@@ -1,6 +1,6 @@
 package com.amadeus.yusufcankorkmaz.casestudy.searchflight.service;
 
-import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.CreateFlightRequest;
+import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.request.CreateFlightRequest;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.FlightDto;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.entity.Flight;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.exception.ExceptionEntity;
@@ -8,6 +8,7 @@ import com.amadeus.yusufcankorkmaz.casestudy.searchflight.exception.NotFoundExce
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.repository.FlightRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -70,10 +71,10 @@ public class FlightService {
                 collect(Collectors.toList()));
     }
 
-    protected List<FlightDto> findFlightsFilteredDay(String departureAirportCityName, String arrivalAirportCityName, LocalDateTime time){
+    protected List<FlightDto> findFlightsFilteredDay(String departureAirportCityName, String arrivalAirportCityName, LocalDate time){
 
-        LocalDateTime startOfDayTime = time.toLocalDate().atStartOfDay();
-        LocalDateTime endOfDayTime = time.toLocalDate().atTime(LocalTime.MAX);
+        LocalDateTime startOfDayTime = time.atStartOfDay();
+        LocalDateTime endOfDayTime = time.atTime(LocalTime.MAX);
 
         List<Flight> flights = flightRepository.findAllByDepartureTimeBetweenAndDepartureAirportCityNameAndArrivalAirportCityName(
                 startOfDayTime,

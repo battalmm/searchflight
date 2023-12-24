@@ -1,14 +1,28 @@
 spring:
+  security:
+    user:
+      name: user
+      password: user
+
   datasource:
     url: jdbc:mysql://localhost:3306/casedb
     username: root
     password: 4815162342
     driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     hibernate:
       ddl-auto: create
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
     generate-ddl: true
+
+case_study:
+  search_flight:
+    secret: X2t0C6sqtMuvZ7C1vNp4jXSiN5VZMY3GZBFfb4jj3M7M=
+    expires:
+      in: 6000000
+
+

@@ -1,6 +1,6 @@
 package com.amadeus.yusufcankorkmaz.casestudy.searchflight.controller;
 
-import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.CreateFlightRequest;
+import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.request.CreateFlightRequest;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.FlightDto;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.service.FlightService;
 import io.swagger.v3.oas.annotations.Operation;

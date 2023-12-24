@@ -1,8 +1,7 @@
 package com.amadeus.yusufcankorkmaz.casestudy.searchflight.mockapi;
 
-import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.CreateFlightRequest;
+import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.request.CreateFlightRequest;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;

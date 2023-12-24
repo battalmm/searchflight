@@ -1,4 +1,4 @@
-package com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto;
+package com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.request;
 
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.entity.Flight;
 import lombok.AllArgsConstructor;

@@ -1,5 +1,6 @@
-package com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto;
+package com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.response;
 
+import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.FlightDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

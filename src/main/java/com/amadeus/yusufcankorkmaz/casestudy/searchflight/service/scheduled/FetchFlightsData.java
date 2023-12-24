@@ -1,6 +1,6 @@
 package com.amadeus.yusufcankorkmaz.casestudy.searchflight.service.scheduled;
 
-import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.CreateFlightRequest;
+import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.request.CreateFlightRequest;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.mockapi.MockedFlightsData;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.service.FlightService;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -20,7 +20,7 @@ public class FetchFlightsData {
         this.mockedFlightsData = mockedFlightsData;
     }
 
-    @Scheduled(cron = "0/30 * * * * *")
+    @Scheduled(cron = "0 0 * * * *")
     public void fetchFlightsData(){
         List<CreateFlightRequest> mockedFlights = mockedFlightsData.fetchMockedFlightsData();
         flightService.createFlightWithList(mockedFlights);

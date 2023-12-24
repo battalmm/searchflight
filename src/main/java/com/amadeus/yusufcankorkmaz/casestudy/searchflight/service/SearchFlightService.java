@@ -1,13 +1,12 @@
 package com.amadeus.yusufcankorkmaz.casestudy.searchflight.service;
 
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.FlightDto;
-import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.SearchFlightRequest;
-import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.SearchFlightResponse;
+import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.request.SearchFlightRequest;
+import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.response.SearchFlightResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class SearchFlightService {
@@ -23,6 +22,7 @@ public class SearchFlightService {
         SearchFlightResponse searchFlightResponse = new SearchFlightResponse(
                 Collections.emptyList(),
                 Collections.emptyList());
+
 
         boolean isOneWayFlight = searchFlightRequest.getReturnTime() == null;
 
