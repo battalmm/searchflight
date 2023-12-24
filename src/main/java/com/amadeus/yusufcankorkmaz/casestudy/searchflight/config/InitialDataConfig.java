@@ -66,7 +66,6 @@ public class InitialDataConfig {
                     Roles.ADMIN
             );
             userRepository.save(admin);
-            log.debug("created ADMIN user - {}", admin);
         }
     }
 }
