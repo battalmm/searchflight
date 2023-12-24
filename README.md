@@ -75,25 +75,25 @@ Overview of the directory structure :
 ## Endpoints
 Here, the available endpoints in the API:
 
-<img width="1169" alt="endpoints" src="https://github.com/battalmm/deneme/assets/122535629/67e5b71b-0f2d-488d-8b7e-198a810c21fb">
+<img width="1169" alt="endpoints" src="https://github.com/battalmm/searchflight/assets/122535629/0431f61b-f144-4944-b6af-3913a60637f3">
 
 
 ## Schemas
 Here, all dto schemas used in the project:
 
-<img width="1127" alt="schema_1" src="https://github.com/battalmm/deneme/assets/122535629/f53222b8-5964-495f-afb5-f169c5e3d733">
-<img width="1119" alt="schema_2" src="https://github.com/battalmm/deneme/assets/122535629/4fc6f7ec-123a-4b31-89dc-56593818cbe7">
+<img width="1127" alt="schema_1" src="https://github.com/battalmm/searchflight/assets/122535629/013b8893-7e39-466e-846a-57c6bc0536cb">
+<img width="1119" alt="schema_2" src="https://github.com/battalmm/searchflight/assets/122535629/149073b0-7aec-46ca-a66c-b8add11fb56c">
 
 ## Search Feature
 When the application start default airports and flights will be create and saced to database. This is an example for input and output flight search feature. If only departure information is given, only the departure flights will list. If the return information is given too, the departure and return flights will list.
 
 1. One way flight:
+   
+<img width="1243" alt="oneway" src="https://github.com/battalmm/searchflight/assets/122535629/1139619e-fcd4-4056-8e44-b524d90370ba">
 
-<img width="1243" alt="oneway" src="https://github.com/battalmm/deneme/assets/122535629/88129286-f721-4084-b8ff-b0d3a9e5871c">
+3. Round trip:
 
-2. Round trip:
-
-<img width="1245" alt="roundtrip" src="https://github.com/battalmm/deneme/assets/122535629/c3f32b86-ab37-4436-8886-08dc3f8651e7">
+<img width="1245" alt="roundtrip" src="https://github.com/battalmm/searchflight/assets/122535629/02f2d29f-940f-45e6-96e4-794d85585454">
 
 ## Authentication
 Authentication and security are provided with Json Web Token in the project. When the application runs, an admin user will be created by default.
