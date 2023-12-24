@@ -39,7 +39,7 @@ public class AirportService {
 
     public AirportDto updateAirport(Long id, AirportDto airportDto){
         Airport airport = airportRepository.findById(id).orElseThrow(()-> new NotFoundException(ExceptionEntity.Airport));
-        airport.setCityName(airport.getCityName());
+        airport.setCityName(airportDto.getCityName());
         return AirportDto.airportToDto(airportRepository.save(airport));
     }
 

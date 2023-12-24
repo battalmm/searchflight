@@ -2,7 +2,6 @@ package com.amadeus.yusufcankorkmaz.casestudy.searchflight.service;
 
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.CreateFlightRequest;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.FlightDto;
-import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.SearchFlightRequest;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.entity.Flight;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.exception.ExceptionEntity;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.exception.NotFoundException;
@@ -41,14 +40,8 @@ public class FlightService {
     }
 
     public FlightDto createFlight(CreateFlightRequest request){
-        Flight flight = new Flight(
-                request.getDepartureDate(),
-                request.getArrivalDate(),
-                request.getPrice(),
-                airportService.fetchAirportById(request.getDepartureAirportId()),
-                airportService.fetchAirportById(request.getArrivalAirportId())
-        );
-        return FlightDto.convertFlightToDto(flight);
+        Flight flight = flightRequestToFlight(request);
+        return FlightDto.convertFlightToDto(flightRepository.save(flight));
     }
 
     public FlightDto updateFlight(Long id, FlightDto newFlightData){
@@ -70,6 +63,13 @@ public class FlightService {
         flightRepository.deleteById(flightId);
     }
 
+    public void createFlightWithList(List<CreateFlightRequest> createFlightRequests){
+        flightRepository.saveAll(createFlightRequests.
+                stream().
+                map(this::flightRequestToFlight).
+                collect(Collectors.toList()));
+    }
+
     protected List<FlightDto> findFlightsFilteredDay(String departureAirportCityName, String arrivalAirportCityName, LocalDateTime time){
 
         LocalDateTime startOfDayTime = time.toLocalDate().atStartOfDay();
@@ -85,5 +85,14 @@ public class FlightService {
                 .stream()
                 .map(FlightDto::convertFlightToDto)
                 .collect(Collectors.toList());
+    }
+
+    private Flight flightRequestToFlight(CreateFlightRequest request){
+        return new Flight(
+                request.getDepartureDate(),
+                request.getArrivalDate(),
+                request.getPrice(),
+                airportService.fetchAirportById(request.getDepartureAirportId()),
+                airportService.fetchAirportById(request.getArrivalAirportId()));
     }
 }

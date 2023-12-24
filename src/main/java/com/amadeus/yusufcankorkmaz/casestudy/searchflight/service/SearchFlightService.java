@@ -3,10 +3,9 @@ package com.amadeus.yusufcankorkmaz.casestudy.searchflight.service;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.FlightDto;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.SearchFlightRequest;
 import com.amadeus.yusufcankorkmaz.casestudy.searchflight.dto.SearchFlightResponse;
-import com.amadeus.yusufcankorkmaz.casestudy.searchflight.entity.Flight;
-import com.amadeus.yusufcankorkmaz.casestudy.searchflight.repository.FlightRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +20,10 @@ public class SearchFlightService {
 
     public SearchFlightResponse searchFlights(SearchFlightRequest searchFlightRequest){
 
-        SearchFlightResponse searchFlightResponse = new SearchFlightResponse();
+        SearchFlightResponse searchFlightResponse = new SearchFlightResponse(
+                Collections.emptyList(),
+                Collections.emptyList());
+
         boolean isOneWayFlight = searchFlightRequest.getReturnTime() == null;
 
         List<FlightDto> departureFlights = flightService.findFlightsFilteredDay(
@@ -33,10 +35,11 @@ public class SearchFlightService {
         if(!isOneWayFlight){
             List<FlightDto> returnFlights = flightService.findFlightsFilteredDay(
                     searchFlightRequest.getArrivalAirportCityName(),
-                    searchFlightRequest.getArrivalAirportCityName(),
+                    searchFlightRequest.getDepartureAirportCityName(),
                     searchFlightRequest.getReturnTime());
             searchFlightResponse.setReturnFlights(returnFlights);
         }
+
         return searchFlightResponse;
     }
 }
